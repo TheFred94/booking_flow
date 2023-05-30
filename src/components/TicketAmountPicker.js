@@ -13,8 +13,6 @@ export function TicketAmountPicker(props) {
   const [oneTentForEach, setOneTentForEach] = useState(false);
   const [twoPersonTentNum, setTwoPersonTentNum] = useState(0);
 
-  const [numberOfTickets, setNumberOfTickets] = useState(0);
-
   /* makes sure that bookingDetails is updated everytime either  "ticketAmount" or "oneTentForEach" changes */
   useEffect(() => {
     updateBookingDetails();

@@ -90,7 +90,10 @@ export function AreaListItem(props) {
     if (bookingDetails.oneTentForEach === true) {
       return bookingDetails.ticketAmount <= availableSpots ? colorClass + " text-color-green" : "text-color-red";
     } else if (bookingDetails.oneTentForEach === false) {
-      return (bookingDetails.ticketAmount < 3 && availableSpots > bookingDetails.ticketAmount) || bookingDetails.ticketAmount / 3 <= availableSpots ? colorClass + " text-color-green" : "text-color-red";
+      return (bookingDetails.ticketAmount < 3 && availableSpots > bookingDetails.ticketAmount) ||
+        bookingDetails.ticketAmount / 3 <= availableSpots
+        ? colorClass + " text-color-green"
+        : "text-color-red";
     }
   }
 
@@ -114,7 +117,11 @@ export function AreaListItem(props) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
+            <Typography
+              id="transition-modal-title"
+              variant="h6"
+              component="h2"
+            >
               Der er ikke nok ledige pladser!
             </Typography>
             <Typography
@@ -126,7 +133,10 @@ export function AreaListItem(props) {
               For at købe billetter til dette område bedes du justere på antal af billetter
             </Typography>
             <div className="mt-10 flex justify-center">
-              <Button className=" mb-10 h-10 gap-5 place-self-center rounded-none border-2 border-solid border-color-yellow px-6 font-sans font-semibold text-color-yellow hover:bg-color-yellow hover:text-color-black " onClick={handleClose}>
+              <Button
+                className=" mb-10 h-10 gap-5 place-self-center rounded-none border-2 border-solid border-color-yellow px-6 font-sans font-semibold text-color-yellow hover:bg-color-yellow hover:text-color-black "
+                onClick={handleClose}
+              >
                 <span className="pt-1">Close</span>
               </Button>
             </div>
@@ -135,15 +145,25 @@ export function AreaListItem(props) {
       </Modal>
 
       <section
-        className={`duration-500" flex h-32 w-full cursor-pointer flex-col self-center rounded-sm bg-color-black bg-gradient-to-b from-color-opacity-20 to-color-opacity-10 py-4 pl-2 pr-3 text-lg sm:w-auto  ${areaAvailable() === "text-color-red" ? "bg-color-opacity-40" : ""}
+        className={`duration-500" flex h-32 w-full cursor-pointer flex-col self-center rounded-sm bg-color-black bg-gradient-to-b from-color-opacity-20 to-color-opacity-10 py-4 pl-2 pr-3 text-lg sm:w-auto  ${
+          areaAvailable() === "text-color-red" ? "bg-color-opacity-40" : ""
+        }
       ${area.area === bookingDetails.area ? "bg-gradient-to-b from-color-teal to-color-purple" : ""}
       
       `}
         onClick={checkTicketAndArea}
       >
         <div className="mr-0 flex justify-between duration-200">
-          <h3 className={` self-center text-lg duration-200 ${areaAvailable() === "text-color-red" ? "text-color-gray" : ""}`}>{area.area}</h3>
-          <RadioGroup className="self-center" aria-label="area" name="area" value={initialArea} onChange={updateBookingInformation}>
+          <h3 className={` self-center text-lg duration-200 ${areaAvailable() === "text-color-red" ? "text-color-gray" : ""}`}>
+            {area.area}
+          </h3>
+          <RadioGroup
+            className="self-center"
+            aria-label="area"
+            name="area"
+            value={bookingDetails.area || ""}
+            onChange={updateBookingInformation}
+          >
             <FormControlLabel
               value={area.area}
               control={
@@ -171,7 +191,9 @@ export function AreaListItem(props) {
         </div>
 
         <div className="mt-auto flex justify-between  ">
-          <p className={`self-center duration-200 ${areaAvailable() === "text-color-red" ? "text-color-gray" : ""}`}>spots left</p>
+          <p className={`self-center duration-200 ${areaAvailable() === "text-color-red" ? "text-color-gray" : ""}`}>
+            spots left
+          </p>
           <div className="self-center font-sans">
             <span className={"pr-2.5 text-2xl font-bold " + areaAvailable()}>{area.available}</span>
           </div>
